@@ -8,7 +8,8 @@ public class AccountTest {
 		System.out.println( account.getAccountNo() + "계좌의 잔고는 " + account.getBalance() + "만원입니다." );
 		
 		account.save( 100 );
-		System.out.println( account.getAccountNo() + "계좌의 잔고는 " + account.getBalance() + "만원입니다." );
+		
+
 
 		account.deposit( 30 );
 		System.out.println( account.getAccountNo() + "계좌의 잔고는 " + account.getBalance() + "만원입니다." );
