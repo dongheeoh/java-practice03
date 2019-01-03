@@ -1,4 +1,4 @@
-package prob6;
+package prob6.refactoring;
 
 import java.util.Scanner;
 
@@ -16,58 +16,50 @@ public class CalcApp {
 				break;
 			}
 			String[] array =expression.split(" ");
-			
+
 			String op =array[1]; //연산자를 문자로 변환 scan변수가 받은 0번째 인덱스를 문자로 변환한다.
 
 			int num1=Integer.parseInt(array[0]);
 			int num2=Integer.parseInt(array[2]);
 
+			
+			Arith arith=null;
 			switch (op) {
 
 				case "+" :
 
-					Add add = new Add();
-
-					add.setValue(num1, num2);
-
-					System.out.println(">> "+add.calculate());
-
+					arith = new Add();
 					break;
 
 				case "-" :
 
-					Sub sub = new Sub();
-
-					sub.setValue(num1, num2);
-
-					System.out.println(">> "+sub.calculate());
-
+					arith = new Sub();
 					break;
 
 				case "*" :
 
-					Mul mul = new Mul();
-
-					mul.setValue(num1, num2);
-
-					System.out.println(">> "+mul.calculate());
-
+					arith = new Mul();
 					break;
 
 				case "/" :
 
-					Div div = new Div();
-
-					div.setValue(num1, num2);
-
-					System.out.println(">> "+div.calculate());
-
+					arith = new Div();
 					break;
 
-				default : System.out.println("잘못된 연산자 입니다.");
+				default : 
+					break;
 
 			}
-			
+			if(arith==null)
+		{
+			System.out.println(">> 알수없는 연산입니다.");
+			continue;
 		}
+			arith.setValue(num1, num2);
+			int result = arith.calculate();
+			System.out.println(">> "+result);
+		}
+		
+		scanner.close();
 	}
 }
